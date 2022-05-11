@@ -27,7 +27,7 @@ pool.getConnection( function(error, connection) {
 });
 
 app.listen(3000, () => {
-    console.log('Server listening 3000');
+    console.log('DB listening 3000');
 });
 
 //callbacks -> promises

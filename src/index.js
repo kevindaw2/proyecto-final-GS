@@ -31,3 +31,4 @@ app.listen(app.get('port'), () => {
 app.use(require('./routes')); 
 app.use(require('./routes/authentication')); 
 app.use('/torneos', require('./routes/torneos')); // url + /torneos para gestionarlos
+app.use(require('./routes/api'));
