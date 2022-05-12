@@ -34,3 +34,8 @@ app.listen(3000, () => {
 pool.query = promisify(pool.query); 
 
 module.exports = pool; 
+
+/**
+ * Exportación de la BBDD desde cmd xampp\mysql\bin
+ * mysqldump -h localhost -u root torneos>D:\Projects\Web\M12\src\database\torneos.sql
+ */
