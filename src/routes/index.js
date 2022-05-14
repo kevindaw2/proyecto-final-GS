@@ -13,4 +13,15 @@ router.get('/', async(req, res) => {
     res.sendFile(path.resolve(__dirname, '../views/index.html'));
 });
 
+router.post('/add', async(req, res) => {
+    const {nombre, equipos, numeros} = req.body; //a partir del formulario se obtienen los atributos
+    const nuevoTorneo = { //nuevo objecto con propiedades 
+        nombre, 
+        equipos,
+        numeros
+    };
+
+    await pool.query('INSERT INTO torneos SET ?', [nuevoTorneo]);
+});
+
 module.exports = router; 

@@ -2,24 +2,24 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db');
 
-// Get all users
-router.get('/api/users', async (req, res) => {
-    const users = await pool.query('SELECT * FROM users');
-    res.json(users);
+// Get all usuarios
+router.get('/api/usuarios', async (req, res) => {
+    const usuarios = await pool.query('SELECT * FROM usuarios');
+    res.json(usuarios);
 });
 
 // Get one user
-router.get('/api/users/:username', async (req, res) => {
+router.get('/api/usuarios/:username', async (req, res) => {
     const { username } = req.params;
-    const user = await pool.query('SELECT * FROM users WHERE username = ?', [username])
+    const user = await pool.query('SELECT * FROM usuarios WHERE username = ?', [username])
     res.json(user);
 });
 
 // Create user
-router.post('/api/users', async (req, res) => {
+router.post('/api/usuarios', async (req, res) => {
     try {
         // Password should be encypted before inserting user
-        await pool.query('INSERT INTO users SET ?', [req.body]);
+        await pool.query('INSERT INTO usuarios SET ?', [req.body]);
         res.json({status: 'created'});
     } catch(err) {
         console.log(err);
@@ -28,10 +28,10 @@ router.post('/api/users', async (req, res) => {
 });
 
 // Update user
-router.put('/api/users/:username', async (req, res) => {
+router.put('/api/usuarios/:username', async (req, res) => {
     try {
         const { username } = req.params;
-        await pool.query('UPDATE users SET ? WHERE username = ?', [req.body, username]);
+        await pool.query('UPDATE usuarios SET ? WHERE username = ?', [req.body, username]);
         res.json({status: 'updated'});
     } catch(err) {
         res.json({status: 'error'});
@@ -39,10 +39,10 @@ router.put('/api/users/:username', async (req, res) => {
 });
 
 // Delete user
-router.delete('/api/users/:username', async (req, res) => {
+router.delete('/api/usuarios/:username', async (req, res) => {
     try {
         const { username } = req.params;
-        await pool.query('DELETE FROM users WHERE username = ?', username);
+        await pool.query('DELETE FROM usuarios WHERE username = ?', username);
         res.json({status: 'deleted'});
     } catch(err) {
         res.json({status: 'error'});
@@ -98,8 +98,8 @@ router.delete('/api/torneos/:id', async (req, res) => {
 // Get torneos for specific user
 router.get('/api/torneos/user/:username', async (req, res) => {
     const { username } = req.params;
-    const users = await pool.query('SELECT * FROM torneos WHERE user = ?', [username]);
-    res.json(users);
+    const usuarios = await pool.query('SELECT * FROM torneos WHERE user = ?', [username]);
+    res.json(usuarios);
 });
 
 module.exports = router;
