@@ -26,6 +26,6 @@ ejectuar phpmyadmin y apache (por ejemplo yo uso xampp)
 importar la bbdd torneos.sql
 ```
 
-``` localhost:4000 
-servidor
+``` 
+servidor en localhost:4000 
 ```
