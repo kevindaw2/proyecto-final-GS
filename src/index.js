@@ -26,7 +26,6 @@ app.engine('hbs', exphbs.engine({
     helpers: require('./lib/handlebars') //helpers para hbs 
 }));
 
-
 //middle
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
