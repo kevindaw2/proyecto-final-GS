@@ -8,14 +8,18 @@ passport.use('local.signup', new Stratergy({ //local signup
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    console.log(req.body);
+    console.log(username);
+    
     const { fullname } = req.body;
     const newUser = {
         username,
         password,
         fullname
     };
+
     newUser.password = await helpers.encryptPassword(password); 
+    var usr = JSON.stringify(usr);
+    console.log('passport newUser');
     const result = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
     console.log('resultado' +  result);
 }));
