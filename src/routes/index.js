@@ -2,9 +2,7 @@
 * Home
 */
 const express = require('express');
-const async = require('hbs/lib/async');
 const router = express.Router(); 
-const path = require('path');
 const pool = require('../db');
 
 

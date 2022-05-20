@@ -8,9 +8,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const flash = require('connect-flash');
 const exphbs = require('express-handlebars');
+const passport = require('passport');
+
 
 const app = express(); 
+require('./lib/passport');
 
 //setts
 app.set('port', process.env.PORT || 4000);
@@ -27,10 +31,13 @@ app.engine('hbs', exphbs.engine({
 }));
 
 //middle
+app.use(flash());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); //public folder to css, js, images...
+app.use(passport.initialize());
+app.use(passport.session());
 
 //global
 
@@ -42,6 +49,7 @@ app.listen(app.get('port'), () => {
 //routes
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/authentication');
+const req = require('express/lib/request');
 
 app.use('/', indexRouter);
 app.use('/', authRouter);  

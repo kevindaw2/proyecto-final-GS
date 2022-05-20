@@ -7,26 +7,26 @@
  */
 
 const express = require('express');
-const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const crypto = require('crypto');
 const router = express.Router();
 const pool = require('../db');
+const passport = require('passport');
 
-passport.use(new LocalStrategy(function verify(username, password, cb) { //passport middleware to authenticate users
-    pool.query('SELECT * FROM usuarios WHERE correo = ?', [username], function (err, row) {
-        if (err) { return cb(err); }
-        if (!row) { return cb(null, false, { message: 'Incorrect username or password.' }); }
+// passport.use(new LocalStrategy(function verify(username, password, cb) { 
+//     pool.query('SELECT * FROM usuarios WHERE correo = ?', [username], function (err, row) {
+//         if (err) { return cb(err); }
+//         if (!row) { return cb(null, false, { message: 'Incorrect username or password.' }); }
 
-        crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', function (err, hashedPassword) {
-            if (err) { return cb(err); }
-            if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
-                return cb(null, false, { message: 'Incorrect username or password.' });
-            }
-            return cb(null, row);
-        });
-    });
-}));
+//         crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', function (err, hashedPassword) {
+//             if (err) { return cb(err); }
+//             if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
+//                 return cb(null, false, { message: 'Incorrect username or password.' });
+//             }
+//             return cb(null, row);
+//         });
+//     });
+// }));
 
 //get login
 router.get('/login', function (req, res, next) {
@@ -46,7 +46,16 @@ router.get('/signup', (req, res) => {
 
 //post signup
 router.post('/signup', function (req, res, next) {
+    console.log(req.body); 
     console.log(res.body); 
+    passport.authenticate('local.signup', {
+        successRedirect: '/profile',
+        failureRedirect: '/signup',
+        failureFlash: true
+    });
+
+    res.send('OK');
+
     var salt = crypto.randomBytes(16);
     crypto.pbkdf2(req.body.password, salt, 310000, 32, 'sha256', function (err, hashedPassword) {
         if (err) { return next(err); }
@@ -66,6 +75,14 @@ router.post('/signup', function (req, res, next) {
             });
         });
     });
+});
+
+router.post('/signup', passport.authenticate('local.signup', {
+
+}));
+
+router.get('/profile', (req, res) => {
+    res.send('Your profile');
 });
 
 module.exports = router;
