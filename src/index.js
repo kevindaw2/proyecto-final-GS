@@ -11,9 +11,9 @@ const path = require('path');
 const flash = require('connect-flash');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
+const session = require('express-session');
 
-
-const app = express(); 
+const app = express();
 require('./lib/passport');
 
 //setts
@@ -33,25 +33,37 @@ app.engine('hbs', exphbs.engine({
 //middle
 app.use(flash());
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); //public folder to css, js, images...
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: 'bla bla bla' 
+  }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//global
+//sessions
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60000, secure: false }
+}));
+
 
 //server
 app.listen(app.get('port'), () => {
     console.log('Server listening', app.get('port'));
 });
- 
+
 //routes
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/authentication');
 const req = require('express/lib/request');
 
 app.use('/', indexRouter);
-app.use('/', authRouter);  
+app.use('/', authRouter);
 app.use('/torneos', require('./routes/torneos')); // url + /torneos para gestionarlos
 app.use(require('./routes/api'));
