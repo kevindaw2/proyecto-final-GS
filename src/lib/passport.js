@@ -1,29 +1,32 @@
+const res = require('express/lib/response');
 const passport = require('passport');
-const Stratergy = require('passport-local');
-const pool = require('../db');
+const Stratergy = require('passport-local').Strategy;
+const {pool} = require('../db');
 const helpers = require('../lib/helpers');
 
 passport.use('local.signup', new Stratergy({ //local signup
-    usernameField: 'username',
+    usernameField: 'correo',
     passwordField: 'password',
     passReqToCallback: true
-}, async (req, username, password, done) => {
-    console.log(username);
+}, async (req, correo, password, done) => {
     
-    const { fullname } = req.body;
     const newUser = {
-        username,
-        password,
-        fullname
+        correo,
+        password
     };
 
     newUser.password = await helpers.encryptPassword(password); 
-    var usr = JSON.stringify(usr);
-    console.log('passport newUser');
     const result = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
-    console.log('resultado' +  result);
+    newUser.id = result.insertId; 
+    console.log(result);
+    return done(null, newUser); //callback
 }));
 
-// passport.serializeUser((user, done) => {
+passport.serializeUser((user, done) => { //serializar id 
+    done(null, user.id); //callback para guardar el id 
+}); 
 
-// }); 
+passport.deserializeUser(async (id, done) => {
+    const row = pool.query('SELECT * FROM usuarios WHERE id = ?', [id]);
+    done(null, row[0]); //callback a partir del id para cerrar la sesion
+})

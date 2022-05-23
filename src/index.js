@@ -12,6 +12,8 @@ const flash = require('connect-flash');
 const exphbs = require('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+const {database} = require('./db');
 
 const app = express();
 require('./lib/passport');
@@ -31,26 +33,27 @@ app.engine('hbs', exphbs.engine({
 }));
 
 //middle
-app.use(flash());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); //public folder to css, js, images...
+app.use(flash()); //mensajes flash
 app.use(session({
-    resave: false,
-    saveUninitialized: true,
-    secret: 'bla bla bla' 
-  }));
+    secret: 'bla bla bla', 
+    resave: false, //renovacion de la session -> no 
+    saveUninitialized: false,
+    store: new MySQLStore(database) //session almacenada en mysql 
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 //sessions
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 60000, secure: false }
-}));
+// app.use(session({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: { maxAge: 60000, secure: false }
+// }));
 
 
 //server

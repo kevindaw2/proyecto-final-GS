@@ -4,14 +4,22 @@ const app = express();
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 const { promisify } = require('util');
-dotenv.config(); 
+dotenv.config();
+
+
+var database = { //session store
+    host: process.env.DBHOST,
+    user: process.env.DBUSER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE 
+}
 
  // Crear grupo de datos
  const pool  = mysql.createPool({
     host: process.env.DBHOST, // dirección de la base de datos
-    user: 'root', // usuario de la base de datos
-    password: '', // contraseña de la base de datos
-    database: 'torneos' // seleccionar base de datos
+    user: process.env.DBUSER, // usuario de la base de datos
+    password: process.env.PASSWORD, // contraseña de la base de datos
+    database: process.env.DATABASE // seleccionar base de datos
 }); 
 
 // Realizar operaciones de sesión en el grupo de datos
@@ -33,7 +41,10 @@ app.listen(3000, () => {
 //callbacks -> promises
 pool.query = promisify(pool.query); 
 
-module.exports = pool; 
+module.exports = {
+    pool, 
+    database
+}; 
 
 /**
  * Exportación de la BBDD desde cmd xampp\mysql\bin
