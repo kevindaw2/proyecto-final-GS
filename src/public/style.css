@@ -24,9 +24,14 @@ body{
         align-items: center;
       }
 
-      header > div:nth-child(2) > a > img{
-        width: 35px;
-        margin-right: 10px;
+      header > div:nth-child(2) > a{
+        text-align: center;
+      }
+
+      #logo{
+        width: 60%;
+        margin: 15px 0;
+        padding-left: 25%;
       }
 
       header > div:nth-child(3) > a > img{
