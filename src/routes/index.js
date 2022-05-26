@@ -30,3 +30,11 @@ router.post('/add', async(req, res) => {
 });
 
 module.exports = router; 
+
+router.get('/RegistroTorneo', async(req, res) => { 
+    res.render('main', {layout: 'registroTorneo'});
+});
+
+router.get('/header', async(req, res) => { 
+    res.render('main', {layout: 'header'});
+});
