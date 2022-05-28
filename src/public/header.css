@@ -1,4 +1,4 @@
-nav {
+nav#header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +9,7 @@ nav {
     background-color: var(--bgAlpha);
 }
 
-img {
+nav#header  img {
     filter: invert();
 }
 
