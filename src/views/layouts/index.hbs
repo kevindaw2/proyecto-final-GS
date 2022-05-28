@@ -3,31 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
-    <title>My Awesome App</title>
+    <title>Back to Lobby | Busca, crea y participa en torneos o busca compañeros</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
   </head>
   <body>
-    <header>
-        <div>
-          
-        </div>
-        <div>
-          <a href=""><img id="logo" src="./fotos/iconos/logo.png"></a>
-        </div>
-        <div>
-          <a href=""><img src="./fotos/iconos/search.png"></a>
-          <a href=""><img src="./fotos/iconos/torneo.png"></a>
-          <a href=""><img src="./fotos/iconos/amigos.png"></a>
-          <a href=""><img src="./fotos/iconos/user.png"></a>
-        </div>
-    </header>
 
-    <nav>
+    {{> header}}
+    
+    <div id="buttons">
         <a href="#"><img src="./fotos/iconos/torneo.png">Torneos</a></li>
         <a href="#"><img src="./fotos/iconos/espadas.png">Equipos</a></li>
         <a href="#"><img src="./fotos/iconos/amigos.png">Amigos</a></li>
-    </nav>
+    </div>
 
     
 
@@ -37,7 +25,7 @@
 
           document.getElementById("defaultOpen").click();
           
-          function openTab(evt, cityName) {
+          function openTab(evt, tab) {
               var i, tabcontent, tablinks;
               tabcontent = document.getElementsByClassName("tabcontent");
               for (i = 0; i < tabcontent.length; i++) {
@@ -47,8 +35,8 @@
               for (i = 0; i < tablinks.length; i++) {
                   tablinks[i].className = tablinks[i].className.replace("active", "");
               }
-              document.getElementById(cityName).style.display = "block";
-              evt.currentTarget.className += "active";
+              document.getElementById(tab).style.display = "block";
+              evt.currentTarget.className += " active";
           }
           
       </script>
@@ -70,7 +58,7 @@
       </div>
       <div class="tab">
         <div>
-          <button class="tablinks" id="defaultOpen" onclick="openTab(event, 'uno')">Rainbow Six Siedge</button>
+          <button class="tablinks active" id="defaultOpen" onclick="openTab(event, 'uno')">Rainbow Six Siedge</button>
         </div>
         <div>
           <button class="tablinks" onclick="openTab(event, 'dos')">Torneos diarios</button>
@@ -134,8 +122,9 @@
             </tr>
       </table>
     </div>
-    <footer>
-      <p>Footer</p>
-    </footer>
+    {{footer}}
+    <?php include 'C:\xampp\htdocs\proyecto-final-GS\src\views\partials\footer.php';?>
+    
+    
   </body>
 <html>
