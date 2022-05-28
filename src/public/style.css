@@ -33,214 +33,200 @@ button:hover {
 }
 
 body{
-        position: relative;
-        font-family: Sans-serif;
-        margin: 0px;
-        background-image: url(./fotos/fondo.jpg);
-        background-size: cover;
-        padding-bottom: 5%;
-        min-height: 90vh;
+  position: relative;
+  font-family: Sans-serif;
+  margin: 0px;
+  background-image: url(./fotos/fondo.jpg);
+  background-size: cover;
+  padding-bottom: 5%;
+  min-height: 90vh;
 }
 
 /*Header*/
 
 header{
-        position: sticky;
-        top: 0;
-        color: black;
-        background-color: #A45ED5;
-        height: 10%;
-        padding: 0 16px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        font-weight: bold;
+  position: sticky;
+  top: 0;
+  color: black;
+  background-color: #A45ED5;
+  height: 10%;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
 }
 
 header > div{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 header > div:nth-child(2) > a{
-        text-align: center;
-      }
+  text-align: center;
+}
 
-      #logo{
-        width: 60%;
-        margin: 15px 0;
-        padding-left: 25%;
-      }
+#logo{
+  width: 60%;
+  margin: 15px 0;
+  padding-left: 25%;
+}
 
-      header > div:nth-child(3) > a > img{
-        width: 25px;
-        margin-right: 10px;
-      }
+header > div:nth-child(3) > a > img{
+  width: 25px;
+  margin-right: 10px;
+}
 
-      /*End header*/
+/*End header*/
 
-      /*Footer*/
+/*Footer*/
 
-      footer{
-        position: absolute;
-        bottom: 0;
-        color: white;
-        background-color: #404040;
-        width: 90%;
-        padding: 1% 5%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        font-weight: bold;
-        height: 2.5rem;  
-      }
+footer{
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background-color: #404040;
+  width: 100%;
+  padding: 1% 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  height: 2.5rem;  
+}
 
-      footer > div{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
+footer > div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
-      /*End footer*/
+/*End footer*/
 
-      /*Home*/
+/*Home*/
 
-      div#buttons{
-        padding: 16px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin: 15px 20%;
-      }
+div#buttons{
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 20%;
+}
 
-      div#buttons > a{
-        padding: 20px 50px;
-        font-size: 30px;
-        font-style: bold;
-        font-weight: bold;
-        text-decoration: none;
-        color: black;
-        background-color: #A45ED5;
-      }
-      div#buttons > a:hover{
-        color: White;
-        background-color: #404040;
-      }
+div#buttons > a{
+  padding: 20px 50px;
+  font-size: 30px;
+  font-style: bold;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  background-color: #A45ED5;
+}
 
-      div#buttons > a > img{
-        height: 50px;
-        margin-right: 10px;
-        vertical-align:middle
-      }
+div#buttons > a:hover{
+  color: White;
+  background-color: #404040;
+}
 
-      #slider{
-        background-color: #404040;
-        padding: 5px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin: 2% 0;
-      }
+div#buttons > a > img{
+  height: 50px;
+  margin-right: 10px;
+  vertical-align:middle
+}
 
-      #banners{
-        width: 72.5%;
-      }
+#slider{
+  background-color: #404040;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2% 0;
+}
 
-      .tab{
-        width: 27.5%;
-      }
+#banners{
+  width: 72.5%;
+}
 
-      #slider > div.tab > div > button{
-        padding: 10% 5%;
-        font-size: 2.1em;
-        font-style: bold;
-        text-decoration: none;
-        color: White;
-        background-color: #404040;
-        width: 100%;
-      }
+.tab{
+  width: 27.5%;
+}
 
-      #slider > div.tab > div > button:hover, #slider > div.tab > div > button.active{
-        color: black;
-        background-color: #A45ED5;
-      }
+#slider > div.tab > div > button{
+  padding: 10% 5%;
+  font-size: 2.1em;
+  font-style: bold;
+  text-decoration: none;
+  color: White;
+  background-color: #404040;
+  width: 100%;
+}
 
-      #banners > div.tabcontent > img{
-        width: 100%;
-      }
+#slider > div.tab > div > button:hover, #slider > div.tab > div > button.active{
+  color: black;
+  background-color: #A45ED5;
+}
 
-      table#recomendados{
-        width: 50%;
-        margin: 0 25%;
-      }
+#banners > div.tabcontent > img{
+  width: 100%;
+}
 
-      #recomendados > tbody > tr:nth-child(1) > th{
-        color: black;
-        background-color: #A45ED5;
-        padding: 20px;
-        padding-left: 45px;
-        padding-right: 45px;
-        font-size: 30px;
-      }
+table#recomendados{
+  width: 50%;
+  margin: 0 25%;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td{
-        border: solid transparent 5px;
-        background-color: #404040;
-      }
+#recomendados > tbody > tr:nth-child(1) > th{
+  color: black;
+  background-color: #A45ED5;
+  padding: 20px;
+  padding-left: 45px;
+  padding-right: 45px;
+  font-size: 30px;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td:nth-child(1){
-        width: 15%;
-      }
+#recomendados > tbody > tr:not(:first-child) > td{
+  border: solid transparent 5px;
+  background-color: #404040;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td:nth-child(2){
-        width: 25%;
-      }
+#recomendados > tbody > tr:not(:first-child) > td:nth-child(1){
+  width: 15%;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td:nth-child(3){
-        width: 40%;
-      }
+#recomendados > tbody > tr:not(:first-child) > td:nth-child(2){
+  width: 25%;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td:nth-child(4){
-        width: 20%;
-      }
+#recomendados > tbody > tr:not(:first-child) > td:nth-child(3){
+  width: 40%;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td:nth-child(4) > a > button{
-        padding: 10px 35px;
-        font-size: 20px;
-        font-style: bold;
-        font-weight: bold;
-        text-decoration: none;
-        color: black;
-        background-color: #A45ED5;
-      }
+#recomendados > tbody > tr:not(:first-child) > td:nth-child(4){
+  width: 20%;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td:nth-child(4) > a > button:hover{
-        color: White;
-        background-color: #404040;
-      }
+#recomendados > tbody > tr:not(:first-child) > td:nth-child(4) > a > button{
+  padding: 10px 35px;
+  font-size: 20px;
+  font-style: bold;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  background-color: #A45ED5;
+}
 
-      #recomendados > tbody > tr:not(:first-child) > td > img{
-        width: 100%;
-      }
+#recomendados > tbody > tr:not(:first-child) > td:nth-child(4) > a > button:hover{
+  color: White;
+  background-color: #404040;
+}
 
-      /*End home*/
+#recomendados > tbody > tr:not(:first-child) > td > img{
+  width: 100%;
+}
 
-      /*Login y Sign in*/
-
-      #inicio{
-        color: black;
-        background-color: #A45ED5;
-        padding: 20px;
-        margin: 5% 30%;
-        font-size: 30px;
-      }
-
-      #inicio > form{
-        color: White;
-        background-color: #404040;
-      }
+/*End home*/
