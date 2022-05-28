@@ -36,7 +36,7 @@ app.engine('hbs', exphbs.engine({
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); //public folder to css, js, images...
+app.use(express.static(path.join(__dirname, '/public'))); //public folder to css, js, images...
 app.use(flash()); //mensajes flash
 app.use(session({
     secret: 'bla bla bla', 
