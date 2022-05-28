@@ -1,12 +1,43 @@
-<h1>Login</h1>
-<form action="/login" method="POST">
-    <section>
-        <label for="username">Username</label>
-        <input id="correo" name="correo" type="text" autocomplete="username" required>
-    </section>
-    <section>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" autocomplete="new-password" required>
-    </section>
-    <button type="submit">Login</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicia Sesión</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./sign-login.css">
+</head>
+<body>
+
+    {{> header}}
+<div id="content">
+
+    <div id="regFormDiv">
+    <span id="formTitle">Log in</span>
+    
+    <div class="regSection">
+        <form action="/login" method="POST"
+            <div class="regBody">
+              <div class="regFormRow">
+                <span class="regFormLabel">Username</span>
+                <input id="correo" name="correo" type="text" autocomplete="username" required autofocus>
+              </div>
+            </div>
+            <div class="regBody">
+              <div class="regFormRow">
+                <span class="regFormLabel">Password</span>
+                <input id="password" name="password" type="password" autocomplete="new-password" required>
+            </div>
+            </div>
+
+            <div>¿No tienes cuenta? <a id="crear" href="/signup">Crea una cuenta</a></div><br>
+            <button id="formSubmitButton" type="submit">Log in</button>
+        </form>
+    </div>
+    </div>
+
+    {{> footer}}
+
+  </body>
+</html>
