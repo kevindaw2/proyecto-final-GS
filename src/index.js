@@ -47,14 +47,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//sessions
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: { maxAge: 60000, secure: false }
-// }));
-
+//globals
+// app.use((req, res, next) => {
+//     app.locals.success = req.flash('success');
+//     app.locals.error = req.flash('error');
+//     app.locals.usuario = req.usuario; //variable usuario para obtener sus datos en layouts 
+// });
 
 //server
 app.listen(app.get('port'), () => {

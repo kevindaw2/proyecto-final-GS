@@ -2,39 +2,22 @@
 * Home
 */
 const express = require('express');
-const router = express.Router(); 
-const pool = require('../db');
+const router = express.Router();
+const { pool } = require('../db');
 const passport = require('passport');
 
 
-router.get('/', async(req, res) => { 
-    res.render('main', {layout: 'index'}); //index.hbs < inside main.hbs
+router.get('/', async (req, res) => {
+    const torneos = await pool.query('SELECT * FROM torneos');
+    res.render('main', { layout: 'index', torneos}); //index.hbs < inside main.hbs
 });
 
 router.post('/',
-passport.authenticate('local', {
-    successRedirect: '/users',
-    failureRedirect: '/'
-})
+    passport.authenticate('local', {
+        successRedirect: '/users',
+        failureRedirect: '/'
+    })
 );
 
-router.post('/add', async(req, res) => {
-    const {nombre, equipos, numeros} = req.body; //a partir del formulario se obtienen los atributos
-    const nuevoTorneo = { //nuevo objecto con propiedades 
-        nombre, 
-        equipos,
-        numeros
-    };
 
-    await pool.query('INSERT INTO torneos SET ?', [nuevoTorneo]);
-});
-
-module.exports = router; 
-
-router.get('/RegistroTorneo', async(req, res) => { 
-    res.render('main', {layout: 'registroTorneo'});
-});
-
-router.get('/header', async(req, res) => { 
-    res.render('main', {layout: 'header'});
-});
+module.exports = router;

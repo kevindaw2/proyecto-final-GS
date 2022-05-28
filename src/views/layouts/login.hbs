@@ -1,12 +1,12 @@
-<h1>Sign in</h1>
-<form action="/login/password" method="post"> <!-- redirect -->
+<h1>Login</h1>
+<form action="/login" method="POST">
     <section>
         <label for="username">Username</label>
-        <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+        <input id="correo" name="correo" type="text" autocomplete="username" required>
     </section>
     <section>
-        <label for="current-password">Password</label>
-        <input id="current-password" name="password" type="password" autocomplete="current-password" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" required>
     </section>
-    <button type="submit">Sign in</button>
+    <button type="submit">Login</button>
 </form>

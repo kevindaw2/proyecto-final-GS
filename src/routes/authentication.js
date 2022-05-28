@@ -10,36 +10,23 @@
 */
 
 const express = require('express');
-const LocalStrategy = require('passport-local').Strategy;
-const crypto = require('crypto');
 const router = express.Router();
-const pool = require('../db');
 const passport = require('passport');
 
 
-//sessions
-passport.serializeUser(function (user, cb) { //in 
-    process.nextTick(function () {
-        cb(null, { id: user.id, username: user.username });
-    });
-});
-
-passport.deserializeUser(function (user, cb) { //out
-    process.nextTick(function () {
-        return cb(null, user);
-    });
-});
-
 //get login
-router.get('/login', function (req, res, next) {
+router.get('/login', function (req, res) {
     res.render('main', { layout: 'login' }); //login.hbs
 });
 
 //post login password
-router.post('/login/password', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-}));
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local.signin', {
+        successRedirect: '/profile',
+        failureRedirect: '/login',
+        failureFlash:true
+    })(req, res, next);
+});
 
 //get signup
 router.get('/signup', (req, res) => {
@@ -56,6 +43,12 @@ router.post('/signup', passport.authenticate('local.signup', {
 //get profile
 router.get('/profile', (req, res) => {
     res.send('Your profile');
+});
+
+//logout
+router.get('/logout', (req, res) => {
+    req.logOut(); 
+    res.render('main', {layout: 'index'});
 });
 
 module.exports = router;
