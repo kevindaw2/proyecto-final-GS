@@ -11,10 +11,10 @@ input{
     transition: border-color 100ms;
 }
 input:hover{
-    border-color: var(--highlightLight);
+    border-color: #A45ED5;
 }
 input:active{
-    border-color: var(--highlightDark);
+    border-color: #A45ED5;
 }
 
 a{

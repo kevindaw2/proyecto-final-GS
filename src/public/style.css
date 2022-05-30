@@ -87,7 +87,7 @@ footer{
   position: absolute;
   bottom: 0;
   color: white;
-  background-color: #404040;
+  background-color: var(--bgPage);
   width: 100%;
   padding: 1% 5%;
   display: flex;
@@ -118,28 +118,32 @@ div#buttons{
 }
 
 div#buttons > a{
+  background-color: var(--bgPage);
+  border-radius: 5px;
+  border: 2px solid #A45ED5;
+  color: var(--text1);
+  transition: border-color 100ms;
   padding: 20px 50px;
   font-size: 30px;
   font-style: bold;
   font-weight: bold;
   text-decoration: none;
-  color: black;
-  background-color: #A45ED5;
 }
 
 div#buttons > a:hover{
-  color: White;
-  background-color: #404040;
+  color: #A45ED5;
+  border-color: var(--highlightDark);
 }
 
 div#buttons > a > img{
+  filter: invert();
   height: 50px;
   margin-right: 10px;
   vertical-align:middle
 }
 
 #slider{
-  background-color: #404040;
+  background-color: var(--bgPage);
   padding: 5px;
   display: flex;
   flex-direction: row;
@@ -157,18 +161,22 @@ div#buttons > a > img{
 }
 
 #slider > div.tab > div > button{
+  background-color: var(--bgPage);
+  border-radius: 5px;
+  border: 2px solid var(--highlightDark);
+  color: var(--text1);
+  transition: border-color 100ms;
+
   padding: 10% 5%;
   font-size: 2.1em;
   font-style: bold;
   text-decoration: none;
-  color: White;
-  background-color: #404040;
   width: 100%;
 }
 
 #slider > div.tab > div > button:hover, #slider > div.tab > div > button.active{
-  color: black;
-  background-color: #A45ED5;
+  color: #A45ED5;
+  border-color: #A45ED5;
 }
 
 #banners > div.tabcontent > img{
@@ -178,11 +186,19 @@ div#buttons > a > img{
 table#recomendados{
   width: 50%;
   margin: 0 25%;
+  background-color: var(--bgPage);
+  border-radius: 5px;
+  border: 2px solid var(--highlightDark);
+  transition: border-color 100ms;
 }
 
 #recomendados > tbody > tr:nth-child(1) > th{
-  color: black;
-  background-color: #A45ED5;
+  background-color: var(--bgPage);
+  border-radius: 5px;
+  border: 2px solid #A45ED5;
+  transition: border-color 100ms;
+
+  color: #A45ED5;
   padding: 20px;
   padding-left: 45px;
   padding-right: 45px;
@@ -191,7 +207,7 @@ table#recomendados{
 
 #recomendados > tbody > tr:not(:first-child) > td{
   border: solid transparent 5px;
-  background-color: #404040;
+  background-color: var(--bgPage);
 }
 
 #recomendados > tbody > tr:not(:first-child) > td:nth-child(1){
@@ -218,11 +234,19 @@ table#recomendados{
   text-decoration: none;
   color: black;
   background-color: #A45ED5;
+
+  
+  background-color: #A45ED5;
+  border-radius: 5px;
+  border: 2px solid #A45ED5;
+  color: black;
+  transition: border-color 100ms;
 }
 
 #recomendados > tbody > tr:not(:first-child) > td:nth-child(4) > a > button:hover{
-  color: White;
-  background-color: #404040;
+  color: #A45ED5;
+  border-color: #A45ED5;
+  background-color: var(--bgPage);
 }
 
 #recomendados > tbody > tr:not(:first-child) > td > img{
