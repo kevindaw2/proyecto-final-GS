@@ -9,11 +9,10 @@ router.get('/add', (req, res) => { //añadir torneo desde -> /torneos/add
 });
 
 //torneo especifico
-router.get('torneo/:id', async(req, res) => {
+router.get('/detalleTorneo/:id', async(req, res) => {
     const { id } = req.params; 
-    console.log(id);
-    //const torneo = await pool.query('SELECT * FROM torneos where id_torneo =?', [id]); 
-    res.render('main', { layout: 'detalleTorneo'}); 
+    const torneo = await pool.query('SELECT * FROM torneos where id_torneo = ?', [id]); 
+    res.render('main', { layout: 'detalleTorneo', torneo}); 
 });
 
 // //añadir torneo 

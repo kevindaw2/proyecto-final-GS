@@ -2,6 +2,7 @@
     {{#each torneos }}
     <div>
         {{ nombre }}, {{ numero_torneo}}, {{ fecha_creacion}}, {{ fecha_comienzo}}, {{ descripcion }}, {{ juego }}, {{ participantes }}, {{ estado }}
+        <a href="/torneos/detalleTorneo/{{id_torneo}}">Únete</a>
     </div>
     {{/each }}
 </div>  
