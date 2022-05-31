@@ -3,13 +3,13 @@ const router = express.Router();
 const mysql = require('mysql');
 const { pool } = require('../db');
 const path = require('path');
-const  isLoggedIn  = require('../routes/authentication');
+const isLoggedIn = require('../lib/helpers');
 
-router.get('/add', (req, res) => { //get vista -> /torneos/add
+router.get('/add', isLoggedIn, (req, res) => { //get vista -> /torneos/add
     res.sendFile(path.join(__dirname, '../views/torneos', 'registroTorneo.html')); 
 });
 
-router.post('/add', async(req, res) => { //post torneo
+router.post('/add', isLoggedIn, async(req, res) => { //post torneo
     console.log(req.body);
     const {nombre, descripcion, reglas, juego, fecha_comienzo, participantes} = req.body;
     const nuevoTorneo = {nombre, descripcion, reglas, juego, fecha_comienzo, participantes};
@@ -26,7 +26,7 @@ router.get('/detalleTorneo/:id', isLoggedIn, async(req, res) => {
     res.render('main', { layout: 'detalleTorneo', torneo}); 
 });
 
-router.get('/yours', async(req, res) => { //  -> /torneos
+router.get('/yours', isLoggedIn, async(req, res) => { //  -> /torneos
     const torneos = await pool.query('SELECT * FROM torneos where id_jugador = ?', [id]);
     res.render('main', { layout: 'index', torneos}); //index.hbs < inside main.hbs
 });
