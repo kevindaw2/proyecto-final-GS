@@ -48,11 +48,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //globals
-// app.use((req, res, next) => {
-//     app.locals.success = req.flash('success');
-//     app.locals.error = req.flash('error');
-//     app.locals.usuario = req.usuario; //variable usuario para obtener sus datos en layouts 
-// });
+app.use((req, res, next) => {
+    app.locals.user = req.user;
+    next();
+})
 
 //server
 app.listen(app.get('port'), () => {

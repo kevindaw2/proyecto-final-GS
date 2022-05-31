@@ -1,82 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de torneo</title>
-    <link rel="stylesheet" type="text/css"  href="/style.css">
-    <link rel="stylesheet" type="text/css"  href="/registroTorneo.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/registroTorneo.css">
 </head>
+
 <body>
 
-<div id="content">
-
-    <div id="regFormDiv">
-
-        <span id="formTitle">Registrar nuevo torneo</span>
-
-        <div class="regSection">
-
-            <span class="regHeader">Información básica</span>
-            <div class="regBody">
-                <div class="regFormRow">
-                    <span class="regFormLabel">Nombre del torneo</span>
-                    <input type="text" placeholder="Nombre torneo" name="tourName">
+    <div id="content">
+        <div id="regFormDiv">
+            <form action="/torneos/add" method="POST">
+                <span id="formTitle">Registrar nuevo torneo</span>
+                <div class="regSection">
+                    <span class="regHeader">Información básica</span>
+                    <div class="regBody">
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Nombre del torneo</span>
+                            <input type="text" placeholder="Nombre torneo" name="nombre">
+                        </div>
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Descripción del torneo</span>
+                            <textarea name="descripcion" id="tourDesc" placeholder="Descripción del torneo..." cols="50"
+                                rows="8"></textarea>
+                        </div>
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Reglas del torneo</span>
+                            <textarea name="reglas" id="tourRules" placeholder="Reglas del torneo..." cols="50"
+                                rows="8"></textarea>
+                        </div>
+                    </div>
                 </div>
-                <div class="regFormRow">
-                    <span class="regFormLabel">Descripción del torneo</span>
-                    <textarea name="tourDesc" id="tourDesc" placeholder="Descripción del torneo..." cols="50" rows="8"></textarea>
+                <div class="regSection">
+                    <span class="regHeader">Información de juego</span>
+                    <div class="regBody">
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Juego a jugar</span>
+                            <input type="text" placeholder="Nombre juego" name="juego">
+                        </div>
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Formato</span>
+                            <select name="tourFormat" id="tourFormat">
+                                <option value="singleElim">Única eliminación</option>
+                                <option value="doubleElim">Doble eliminación</option>
+                                <option value="roundRobin">Round Robin</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="regFormRow">
-                    <span class="regFormLabel">Reglas del torneo</span>
-                    <textarea name="tourRules" id="tourRules" placeholder="Reglas del torneo..." cols="50" rows="8"></textarea>
+
+                <div class="regSection">
+                    <span class="regHeader">Información de torneo</span>
+                    <div class="regBody">
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Fecha del torneo</span>
+                            <input type="datetime-local" name="fecha_comienzo">
+                        </div>
+                        <div class="regFormRow">
+                            <span class="regFormLabel">Límite de jugadores</span>
+                            <input type="number" min="0" max="64" value="8" name="participantes">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
+                <button type="submit" id="formSubmitButton">Guardar y continuar</button>
         </div>
-
-        <div class="regSection">
-
-            <span class="regHeader">Información de juego</span>
-            <div class="regBody">
-                <div class="regFormRow">
-                    <span class="regFormLabel">Juego a jugar</span>
-                    <input type="text" placeholder="Nombre juego" name="tourGame">
-                </div>
-                <div class="regFormRow">
-                    <span class="regFormLabel">Formato</span>
-                    <select name="tourFormat" id="tourFormat">
-                        <option value="singleElim">Única eliminación</option>
-                        <option value="doubleElim">Doble eliminación</option>
-                        <option value="roundRobin">Round Robin</option>
-                    </select>
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="regSection">
-
-            <span class="regHeader">Información de torneo</span>
-            <div class="regBody">
-                <div class="regFormRow">
-                    <span class="regFormLabel">Fecha del torneo</span>
-                    <input type="datetime-local" name="tourTime">
-                </div>
-                <div class="regFormRow">
-                    <span class="regFormLabel">Límite de jugadores</span>
-                    <input type="number" min="0" max="64" value="8" name="tourPlayerLimit">
-                </div>
-            </div>
-            
-        </div>
-
-        <button type="submit" id="formSubmitButton">Guardar y continuar</button>
-
+        </form>
     </div>
 
-</div>
-    
 </body>
+
 </html>

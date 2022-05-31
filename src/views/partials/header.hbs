@@ -27,7 +27,7 @@
     <div id="navRightDiv" class="center">
 
         <div id="navUserDiv" tabindex="1">
-            <span class="navUserName">Usuario</span>
+            <span class="navUserName">{{user.correo}}</span>
             <img class="navIcon" src="./fotos/iconos/user.png">
             <div id="userDropMenu">
                 <div class="userDropRow">
@@ -39,6 +39,9 @@
                 </div>
                 <div class="userDropRow">
                     <a class="navLink" href="">Ajustes de cuenta</a>
+                </div>
+                <div class="userDropRow">
+                    <a class="navLink" href="/logout">Cerrar sesión</a>
                 </div>
             </div>
         </div>

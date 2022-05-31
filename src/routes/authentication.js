@@ -13,7 +13,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-
 //get login
 router.get('/login', function (req, res) {
     res.render('main', { layout: 'login' }); //login.hbs
@@ -42,7 +41,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 
 //get profile
 router.get('/profile', (req, res) => {
-    res.send('Your profile');
+    res.render('main', { layout: 'profile' });
 });
 
 //logout
@@ -51,4 +50,4 @@ router.get('/logout', (req, res) => {
     res.render('main', {layout: 'index'});
 });
 
-module.exports = router;
+module.exports = router; 

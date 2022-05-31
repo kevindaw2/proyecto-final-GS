@@ -13,6 +13,14 @@ helpers.matchPassword = async(password, savedPassword) => {
     } catch (e) {
         console.log('Error crypting: ' + e);
     }
-}
+};
+
+//comprueva si el usuario esta loggeado
+helpers.isLoggedin = (req, res, next) => {
+    if(req.isAuthenticated()) {
+        return next(); 
+    }
+    return res.redirect('/login');
+};
 
 module.exports = helpers;

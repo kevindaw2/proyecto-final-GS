@@ -3,29 +3,33 @@ const router = express.Router();
 const mysql = require('mysql');
 const { pool } = require('../db');
 const path = require('path');
+const  isLoggedIn  = require('../routes/authentication');
 
-router.get('/add', (req, res) => { //añadir torneo desde -> /torneos/add
+router.get('/add', (req, res) => { //get vista -> /torneos/add
     res.sendFile(path.join(__dirname, '../views/torneos', 'registroTorneo.html')); 
 });
 
+router.post('/add', async(req, res) => { //post torneo
+    console.log(req.body);
+    const {nombre, descripcion, reglas, juego, fecha_comienzo, participantes} = req.body;
+    const nuevoTorneo = {nombre, descripcion, reglas, juego, fecha_comienzo, participantes};
+
+    await pool.query('INSERT INTO torneos set ?', [nuevoTorneo]);
+
+    res.send('Recivided');
+});
+
 //torneo especifico
-router.get('/detalleTorneo/:id', async(req, res) => {
+router.get('/detalleTorneo/:id', isLoggedIn, async(req, res) => {
     const { id } = req.params; 
     const torneo = await pool.query('SELECT * FROM torneos where id_torneo = ?', [id]); 
     res.render('main', { layout: 'detalleTorneo', torneo}); 
 });
 
-// //añadir torneo 
-// router.post('/add', async (req, res) => {
-//     const { nombre, equipos, numeros } = req.body; //a partir del formulario se obtienen los atributos
-//     const nuevoTorneo = { //nuevo objecto con propiedades 
-//         nombre,
-//         equipos,
-//         numeros
-//     };
-
-//     await pool.query('INSERT INTO torneos SET ?', [nuevoTorneo]);
-// });
+router.get('/yours', async(req, res) => { //  -> /torneos
+    const torneos = await pool.query('SELECT * FROM torneos where id_jugador = ?', [id]);
+    res.render('main', { layout: 'index', torneos}); //index.hbs < inside main.hbs
+});
 
 
 module.exports = router; 
