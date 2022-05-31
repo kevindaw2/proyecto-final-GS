@@ -15,12 +15,10 @@ helpers.matchPassword = async(password, savedPassword) => {
     }
 };
 
-//comprueva si el usuario esta loggeado
-helpers.isLoggedin = (req, res, next) => {
+module.exports = helpers;
+module.exports = function isLoggedIn (req, res, next) { //comprueva si el usuario esta loggeado
     if(req.isAuthenticated()) {
         return next(); 
     }
     return res.redirect('/login');
 };
-
-module.exports = helpers;

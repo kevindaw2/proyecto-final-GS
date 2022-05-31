@@ -12,6 +12,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const isLoggedIn = require('../lib/helpers');
 
 //get login
 router.get('/login', function (req, res) {
@@ -40,7 +41,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 }));  
 
 //get profile
-router.get('/profile', (req, res) => {
+router.get('/profile', isLoggedIn, (req, res) => {
     res.render('main', { layout: 'profile' });
 });
 
