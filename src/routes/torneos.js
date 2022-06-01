@@ -18,11 +18,11 @@ router.post('/add', async(req, res) => { //post torneo
 });
 
 //torneo especifico
-router.get('/detalleTorneo/:id', async(req, res) => {
+router.get('/vistaTorneo/:id', async(req, res) => {
     const { id } = req.params; 
-    const torneo = await pool.query('SELECT * FROM torneos where id_torneo = ?', [id]); 
+    const torneo = await pool.query('SELECT * FROM torneos'); 
     res.render('main', { layout: 'vistaTorneo', torneo}); 
-});
+}); 
 
 router.get('/yours', async(req, res) => { //  -> /torneos
     const {id} = req.user.id_usuario; 
