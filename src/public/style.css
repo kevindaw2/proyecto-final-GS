@@ -6,7 +6,7 @@
   --bgAlpha2: #444444b6;
   --text1: #ececec;
   --text2: #b6b6b6;
-  --highlightLight: #2ba4eb;
+  --highlightLight: #A45ED5;
   --highlightDark: #686868;
 }
 
@@ -42,8 +42,6 @@ body{
   min-height: 90vh;
 }
 
-
-
 /*Footer*/
 
 footer{
@@ -59,6 +57,7 @@ footer{
   font-weight: bold;
   height: 2.5rem;
   color: var(--text2);
+  border-top: 2px solid var(--highlightDark);
 }
 
 /*End footer*/
@@ -190,9 +189,6 @@ table#recomendados{
   font-weight: bold;
   text-decoration: none;
   color: black;
-  background-color: #A45ED5;
-
-  
   background-color: #A45ED5;
   border-radius: 5px;
   border: 2px solid #A45ED5;
