@@ -14,6 +14,7 @@ const passport = require('passport');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const {database} = require('./db');
+const {create} = require('express-handlebars');
 
 const app = express();
 require('./lib/passport');
@@ -31,6 +32,14 @@ app.engine('hbs', exphbs.engine({
     extname: '.hbs', //extension para las views 
     helpers: require('./lib/handlebars') //helpers para hbs 
 }));
+
+const hbs = create({
+    helpers: {
+        dateFormat() {return "h"},
+        foo() { return 'FOO!'; },
+        bar() { return 'BAR!'; }
+    }
+});
 
 //middle
 app.use(morgan('dev'));

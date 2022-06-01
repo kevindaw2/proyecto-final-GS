@@ -12,7 +12,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const isLoggedIn = require('../lib/helpers');
+const { pool } = require('../db');
 
 //get login
 router.get('/login', function (req, res) {
@@ -41,14 +41,16 @@ router.post('/signup', passport.authenticate('local.signup', {
 }));  
 
 //get profile
-router.get('/profile', isLoggedIn, (req, res) => {
-    res.render('main', { layout: 'profile' });
+router.get('/profile', async(req, res) => {
+    const {id} = req.user.id_usuario; 
+    const torneos = await pool.query('SELECT * FROM torneos where id_jugador = 0');
+    res.render('main', { layout: 'profile', torneos}); //index.hbs < inside main.hbs
 });
 
 //logout
 router.get('/logout', (req, res) => {
     req.logOut(); 
-    res.render('main', {layout: 'index'});
+    res.redirect('/');
 });
 
 module.exports = router; 

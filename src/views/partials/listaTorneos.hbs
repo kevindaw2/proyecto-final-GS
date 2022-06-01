@@ -1,32 +1,28 @@
-
-        <!--{{ nombre }}, {{ numero_torneo}}, {{ fecha_creacion}}, {{ fecha_comienzo}}, {{ descripcion }}, {{ juego }}, {{ participantes }}, {{ estado }}
-        <a href="/torneos/detalleTorneo/{{id_torneo}}">Únete</a>-->
-
 <div>
-        <table id="recomendados">
-            <tr>
-                <th colspan="4">Torneos Recomendados</th>
-            </tr>
-            {{#each torneos }}
-            <tr>
-                <td><img src="./fotos/portadas/{{ juego }}.jpg"></td>
-                <td>
-                  <h1>{{ nombre }}</h1>
-                  <script>
-                      var data = new Date("{{ fecha_comienzo}}");
-                      document.getElementById("fecha").innerHTML="Comienza el: "+ data.toLocaleDateString();
-                  </script>
-                  <div id="fecha"></div><br>
-                  <h3>Juego: {{ juego }}</h3>
-                </td>
-                <td>Descripción: <br>
-                  {{ descripcion }}
-                </td>
-                <td>
-                  Miembros: {{ participantes }} / 200<br>
-                  <a href="/torneos/detalleTorneo/{{id_torneo}}"><button>Únete</button></a>
-                </td>
-            </tr>
-            {{/each }}
-      </table>
-    </div>
+  <table id="recomendados">
+    <tr>
+      <th colspan="4">Torneos Recomendados</th>
+    </tr>
+    {{#each torneos }}
+    <tr>
+      <td><img src="./fotos/portadas/{{ juego }}.jpg"></td>
+      <td>
+        <h1>{{ nombre }}</h1>
+        <script>
+          var data = new Date("{{ fecha_comienzo}}");
+          document.getElementById("fecha").innerHTML = "Comienza el: " + data.toLocaleDateString();
+        </script>
+        <div id="fecha">{{{dateFormat}}}</div><br>
+        <h3>Juego: {{ juego }}</h3>
+      </td>
+      <td>Descripción: <br>
+        {{ descripcion }}
+      </td>
+      <td>
+        Miembros: {{ participantes }} / 200<br>
+        <a href="/torneos/detalleTorneo/{{id_torneo}}"><button>Únete</button></a>
+      </td>
+    </tr>
+    {{/each }}
+  </table>
+</div>
