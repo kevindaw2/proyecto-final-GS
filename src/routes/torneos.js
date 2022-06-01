@@ -20,7 +20,7 @@ router.post('/add', async(req, res) => { //post torneo
 //torneo especifico
 router.get('/vistaTorneo/:id', async(req, res) => {
     const { id } = req.params; 
-    const torneo = await pool.query('SELECT * FROM torneos'); 
+    const torneo = await pool.query('SELECT * FROM torneos where id_torneo = ?', [id]); 
     res.render('main', { layout: 'vistaTorneo', torneo}); 
 }); 
 
