@@ -9,7 +9,7 @@ nav#header {
     background-color: var(--bgAlpha);
 }
 
-nav#header  img {
+nav#header img {
     filter: invert();
 }
 
@@ -23,16 +23,21 @@ nav#header  img {
     gap: 15px;
 }
 
+#logo {
+    height: 40px;
+}
+
 #navUserDiv {
     display: flex;
     gap: 10px;
     cursor: pointer;
+    align-items: center;
     position: relative;
 }
 
 #userDropMenu {
     position: absolute;
-    top: 100%;
+    top: 115%;
     right: 0px;
     display: none;
     flex-direction: column;

@@ -1,26 +1,36 @@
-<div>
-     {{> header}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Perfil usuario</title>
+     <link rel="stylesheet" type="text/css" href="/style.css">
+     <link rel="stylesheet" type="text/css" href="/profile.css">
+</head>
+<body>
+     
+</body>
+</html>
+
+{{> header}}
+
+<div id="profileTitleDivOut" class="center">
+     <div id="profileTitleDiv">
+          <img id="profileUserImg" src="./fotos/iconos/user.png" alt="">
+          <div id="profileUserInfo">
+               <span id="profileUserText">{{user.correo}}</span>
+               <span class="profileUserSubtext">Nombre: {{user.nombre}}</span>
+               <span class="profileUserSubtext">Apellido: {{user.apellido}}</span>
+               <span class="profileUserSubtext">Alias: {{user.alias}}</span>
+               <span class="profileUserSubtext">Telefono: {{user.telefono}}</span>
+               <span class="profileUserSubtext">Registrado desde: {{user.fecha_comienzo}}</span>
+          </div>
+     </div>
 </div>
-<div>
-      {{#each torneos }}
-     <tr>
-          <td><img src="./fotos/portadas/{{ juego }}.jpg"></td>
-          <td>
-               <h1>{{ nombre }}</h1>
-               <script>
-                    var data = new Date("{{ fecha_comienzo}}");
-                    document.getElementById("fecha").innerHTML = "Comienza el: " + data.toLocaleDateString();
-               </script>
-               <div id="fecha"></div><br>
-               <h3>Juego: {{ juego }}</h3>
-          </td>
-          <td>Descripción: <br>
-               {{ descripcion }}
-          </td>
-          <td>
-               Miembros: {{ participantes }} / 200<br>
-               <a href="/torneos/detalleTorneo/{{id_torneo}}"><button>Únete</button></a>
-          </td>
-     </tr>
-     {{/each }}
+
+<div class="center">
+     <a id="createTourButton" href="torneos/add">Crear Torneo</a>
 </div>
+
+{{> footer}}
