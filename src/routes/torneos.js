@@ -4,17 +4,18 @@ const { pool } = require('../db');
 const path = require('path');
 
 router.get('/add', (req, res) => { //get vista -> /torneos/add
-    res.sendFile(path.join(__dirname, '../views/torneos', 'registroTorneo.html')); 
+    res.render('main', { layout: 'registroTorneo'})
 });
 
 router.post('/add', async(req, res) => { //post torneo
     console.log(req.body);
     const {nombre, descripcion, reglas, juego, fecha_comienzo, participantes} = req.body;
-    const nuevoTorneo = {nombre, descripcion, reglas, juego, fecha_comienzo, participantes};
+    const {id_jugador} = req.user.id_usuario;
+    const nuevoTorneo = {nombre, descripcion, reglas, juego, fecha_comienzo, participantes, id_jugador};
 
     await pool.query('INSERT INTO torneos set ?', [nuevoTorneo]);
 
-    res.send('Recivided');
+    res.redirect('/profile');
 });
 
 //torneo especifico
