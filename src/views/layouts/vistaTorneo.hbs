@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/vistaTorneo.css">
+</head>
+<body>
+
+<div id="toutTitleDivOut" class="center">
+    <div id="tourTitleDiv">
+        <img id="tourTitleGameImg" src="./fotos/portadas/{{ juego }}.jpg" alt="">
+        <div id="tourTitleInfoDiv">
+            <span id="tourTitleText">Un Torneo Guay</span>
+            <span class="tourTitleSubtext">Juego: Fornite</span>
+            <span class="tourTitleSubtext">Jugadores: 14/64</span>
+            <span class="tourTitleSubtext">Modalidad: Única Eliminación</span>
+            <span class="tourTitleSubtext">Fecha: 01/06/2022</span>
+        </div>
+    </div>
+</div>
+
+<div id="tourDescDiv" class="contentDiv">
+    <div class="tourHeading">Descripción del torneo</div>
+    <div class="tourText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce scelerisque nisl augue, id pellentesque nunc gravida tristique. Proin bibendum blandit tortor, sed blandit lorem sodales id. Mauris mattis mollis odio. Donec auctor malesuada nibh, at condimentum est fringilla eu. Vivamus at mattis enim. Etiam placerat congue libero a sollicitudin. Aenean vel ligula ac dolor dictum ultrices at at ex. Phasellus sed bibendum massa, eu fermentum ex. Donec varius ante vitae nibh cursus consequat sit amet in neque. In hac habitasse platea dictumst. Cras egestas lectus vitae augue fringilla, at tempus massa luctus.</div>
+</div>
+
+<div id="tourRulesDiv" class="contentDiv">
+    <div class="tourHeading">Reglas del torneo</div>
+    <div class="tourText">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam purus lectus, aliquam eu eros in, mollis ultrices ex. Nam bibendum risus posuere odio placerat, in porta nulla malesuada. Vivamus a facilisis sapien. Duis vel enim risus. Fusce quam mi, consequat eu lacus eget, scelerisque pharetra metus. Curabitur nisl massa, congue sit amet porttitor id, tincidunt non ipsum. </div>
+</div>
+
+<div id="tourPlayersDiv" class="contentDiv">
+    <div class="tourHeading">Jugadores registrados</div>
+    <div id="tourPlayerList">
+        {{!-- meter un foreach aqui o algo --}}
+        <div class="userListEntry">
+            <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+            <span class="userListName">Alejandro</span>
+        </div>
+        <div class="userListEntry">
+            <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+            <span class="userListName">Roberto</span>
+        </div>
+        <div class="userListEntry">
+            <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+            <span class="userListName">Fernando</span>
+        </div>
+    </div>
+    <a href="" id="registerButton">Apuntarse al torneo</a>
+</div>
+
+<div id="bracketDiv">
+    <div id="bracketColumns">
+        <div class="bracketColumn">
+            <div class="columnTitle">Ronda 1</div>
+            <div class="encounterList">
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Alejandro</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Fernando</span>
+                    </div>
+                </div>
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Roberto</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Laura</span>
+                    </div>
+                </div>
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Ramon</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Albert</span>
+                    </div>
+                </div>
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Anastasia</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <img class="userListIcon" src="./fotos/iconos/user.png" alt="">
+                        <span class="userListName">Bernardo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bracketColumn">
+            <div class="columnTitle">Semi-Finales</div>
+            <div class="encounterList">
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <span class="userListName grey">Ganador de A1</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <span class="userListName grey">Ganador de A2</span>
+                    </div>
+                </div>
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <span class="userListName grey">Ganador de A3</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <span class="userListName grey">Ganador de A4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bracketColumn">
+            <div class="columnTitle">Gran Final</div>
+            <div class="encounterList">
+                <div class="encounter">
+                    <div class="encounterPlayer">
+                        <span class="userListName grey">Ganador de B1</span>
+                    </div>
+                    <div class="encounterPlayer">
+                        <span class="userListName grey">Ganador de B2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+
+</script>

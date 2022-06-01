@@ -19,5 +19,9 @@ router.post('/',
     })
 );
 
+router.get('/vistaTorneo', async (req, res) => {
+    res.render('main', { layout: 'vistaTorneo'}); //index.hbs < inside main.hbs
+});
+
 
 module.exports = router;
