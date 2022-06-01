@@ -3,7 +3,6 @@ const passport = require('passport');
 const Stratergy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const { pool } = require('../db');
-const helpers = require('../lib/helpers');
 
 async function encryptPassword(password) {
     const salt = await bcrypt.genSalt(10);
