@@ -1,5 +1,3 @@
-
-
 #tourTitleDiv {
     background-color: var(--bgAlpha2);
     padding: 20px;
@@ -73,6 +71,7 @@
 .userListIcon {
     width: 20px;
     height: 20px;
+    filter: invert();
 }
 
 #registerButton {

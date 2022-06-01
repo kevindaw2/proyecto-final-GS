@@ -31,17 +31,17 @@
             <span class="navUserName">{{user.correo}}</span>
             <img class="navIcon" src="./fotos/iconos/user.png">
             <div id="userDropMenu">
-                <div class="userDropRow">
+                <div class="userDropRow" id="loginRow">
                     <a class="navLink" href="/login">Iniciar sesión</a>
                 </div>
                 <div class="userDropRow">
-                    <label for="darkMode">Tema claro</label>
-                    <input type="checkbox" id="darkMode" name="darkMode">
+                    <label for="whiteMode">Tema claro</label>
+                    <input type="checkbox" id="whiteMode" name="whiteMode">
                 </div>
-                <div class="userDropRow">
-                    <a class="navLink" href="">Ajustes de cuenta</a>
+                <div class="userDropRow" id="profileRow">
+                    <a class="navLink" href="/profile">Perfil usuario</a>
                 </div>
-                <div class="userDropRow">
+                <div class="userDropRow" id="logoutRow">
                     <a class="navLink" href="/logout">Cerrar sesión</a>
                 </div>
             </div>
@@ -50,3 +50,42 @@
     </div>
 
 </nav>
+
+<script>
+
+    const loginRow = document.getElementById("loginRow");
+    const profileRow = document.getElementById("profileRow");
+    const logoutRow = document.getElementById("logoutRow");
+
+    if ("{{user}}") {
+        loginRow.style.display = "none";
+    } else {
+        profileRow.style.display = "none";
+        logoutRow.style.display = "none";
+    }
+
+    document.getElementById("whiteMode").addEventListener("click", whiteMode);
+    
+    function whiteMode() {
+        const r = document.querySelector(':root');
+        if (this.checked) {
+            r.style.setProperty("--bgPage", "#fcfcfc");
+            r.style.setProperty("--bgLight", "#dddddd");
+            r.style.setProperty("--bgDark", "#aaaaaa");
+            r.style.setProperty("--bgAlpha", "#ddddddb6");
+            r.style.setProperty("--bgAlpha2", "#bbbbbbb6");
+            r.style.setProperty("--text1", "#000000");
+            r.style.setProperty("--text2", "#4d4d4d");
+        } else {
+            r.style.setProperty("--bgPage", "#2b2b2b");
+            r.style.setProperty("--bgLight", "#383838");
+            r.style.setProperty("--bgDark", "#1e1e24");
+            r.style.setProperty("--bgAlpha", "#383838b6");
+            r.style.setProperty("--bgAlpha2", "#444444b6");
+            r.style.setProperty("--text1", "#ececec");
+            r.style.setProperty("--text2", "#b6b6b6");
+        }
+    }
+
+
+</script>
