@@ -8,7 +8,7 @@ const passport = require('passport');
 
 
 router.get('/', async (req, res) => {
-    const torneos = await pool.query('SELECT * FROM torneos');
+    const torneos = await pool.query('SELECT * FROM torneos LIMIT 0, 5');
     res.render('main', { layout: 'index', torneos}); //index.hbs < inside main.hbs
 });
 

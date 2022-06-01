@@ -14,23 +14,24 @@
     <div id="content">
         <div id="regFormDiv">
             <form action="/torneos/add" method="POST">
-                <span id="formTitle">Registrar nuevo torneo</span>
+                <span id="formTitle">Editar Torneo</span>
                 <div class="regSection">
                     <span class="regHeader">Información básica</span>
                     <div class="regBody">
                         <div class="regFormRow">
                             <span class="regFormLabel">Nombre del torneo</span>
-                            <input type="text" placeholder="Nombre torneo" name="nombre">
+                            <input type="text" value="{{torneo.nombre}}" placeholder="Nombre torneo" name="nombre">
                         </div>
                         <div class="regFormRow">
                             <span class="regFormLabel">Descripción del torneo</span>
-                            <textarea name="descripcion" id="tourDesc" placeholder="Descripción del torneo..." cols="50"
-                                rows="8"></textarea>
+                            <textarea name="descripcion" id="tourDesc" placeholder="Descripción del torneo..." cols="50" rows="8">
+                                {{torneo.descripcion}}
+                            </textarea>
                         </div>
                         <div class="regFormRow">
                             <span class="regFormLabel">Reglas del torneo</span>
                             <textarea name="reglas" id="tourRules" placeholder="Reglas del torneo..." cols="50"
-                                rows="8"></textarea>
+                                rows="8">{{torneo.reglas}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
                     <div class="regBody">
                         <div class="regFormRow">
                             <span class="regFormLabel">Juego a jugar</span>
-                            <input type="text" placeholder="Nombre juego" name="juego">
+                            <input type="text" value="{{torneo.juego}}" placeholder="Nombre juego" name="juego">
                         </div>
                         <div class="regFormRow">
                             <span class="regFormLabel">Formato</span>
@@ -57,11 +58,11 @@
                     <div class="regBody">
                         <div class="regFormRow">
                             <span class="regFormLabel">Fecha del torneo</span>
-                            <input type="datetime-local" name="fecha_comienzo">
+                            <input type="datetime-local" value="{{torneo.fecha_comienzo}}" name="fecha_comienzo">
                         </div>
                         <div class="regFormRow">
                             <span class="regFormLabel">Límite de jugadores</span>
-                            <input type="number" min="0" max="64" value="8" name="participantes">
+                            <input type="number" value="{{torneo.participantes}}"  min="0" max="64" value="8" name="participantes">
                         </div>
                     </div>
                 </div>

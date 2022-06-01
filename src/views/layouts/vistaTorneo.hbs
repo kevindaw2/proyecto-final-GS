@@ -62,7 +62,9 @@
                     <span class="userListName">Fernando</span>
                </div>
           </div>
-          <a href="" id="registerButton">Apuntarse al torneo</a>
+          {{#each torneo }}
+               <a href="/torneos/vistaTorneo/{{id_torneo}}" id="registerButton">Apuntarse al torneo</a>
+          {{/each }}
      </div>
 
      <div id="bracketDiv">

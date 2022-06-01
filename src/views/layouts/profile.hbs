@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,21 @@
      <link rel="stylesheet" type="text/css" href="/style.css">
      <link rel="stylesheet" type="text/css" href="/profile.css">
 </head>
+
 <body>
-     
+
 </body>
+
 </html>
 
 {{> header}}
+
+{{#if success}}
+<div>
+     {{success}}
+     <button>succes</button>
+</div>
+{{/if}}
 
 <div id="profileTitleDivOut" class="center">
      <div id="profileTitleDiv">
@@ -29,6 +39,18 @@
      </div>
 </div>
 
+{{#each torneos }}
+<img id="tourTitleGameImg" src="../../fotos/portadas/{{ juego }}.jpg" alt="">
+<div id="tourTitleInfoDiv">
+     <span id="tourTitleText">{{nombre}}</span>
+     <span class="tourTitleSubtext">Juego: {{juego}}</span>
+     <span class="tourTitleSubtext">Jugadores: {{participantes}}</span>
+     <span class="tourTitleSubtext">Modalidad: Única Eliminación</span>
+     <span class="tourTitleSubtext">Fecha: {{fecha_comienzo}}</span>
+     <a href="/torneos/edit/{{id_torneo}}">Editar Torneo</a>
+     <a href="/torneos/delete/{{id_torneo}}">Eliminar Torneo</a>
+</div>
+{{/each }}
 <div class="center">
      <a id="createTourButton" href="torneos/add">Crear Torneo</a>
 </div>
