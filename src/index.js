@@ -29,8 +29,7 @@ app.engine('hbs', exphbs.engine({
     defaultLayout: 'main', //main principal con css fonts, etc ... 
     layoutsDir: path.join(app.get('views'), 'layouts'), //diferentes vistas de la app
     partialsDir: path.join(app.get('views'), 'partials'), //"componentes reutilizables en las diferentes vistas"
-    extname: '.hbs', //extension para las views 
-    helpers: require('./lib/handlebars') //helpers para hbs 
+    extname: '.hbs' //extension para las views 
 }));
 
 //middle

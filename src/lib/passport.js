@@ -1,8 +1,23 @@
 const res = require('express/lib/response');
 const passport = require('passport');
 const Stratergy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 const { pool } = require('../db');
 const helpers = require('../lib/helpers');
+
+async function encryptPassword(password) {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+    return hash;
+}
+
+async function matchPassword(password, savedPassword) {
+    try {
+        return await bcrypt.compare(password, savedPassword);
+    } catch (e) {
+        console.log('Error crypting: ' + e);
+    }
+};
 
 passport.use('local.signin', new Stratergy({
     usernameField: 'correo',
@@ -14,7 +29,7 @@ passport.use('local.signin', new Stratergy({
     if (rows.length > 0) {
         console.log("correo encontrado");
         const user = rows[0];
-        const matchedPassword = await helpers.matchPassword(password, user.password);
+        const matchedPassword = matchPassword(password, user.password);
         if (matchedPassword) {
             done(null, user, req, req.flash('succes', 'Bienvenido' + user.correo));
         } else {
@@ -38,7 +53,7 @@ passport.use('local.signup', new Stratergy({ //local signup
         password
     };
 
-    newUser.password = await helpers.encryptPassword(password);
+    newUser.password = encryptPassword(password);
     const result = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
     newUser.id_usuario = result.insertId;
     console.log(result);
