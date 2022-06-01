@@ -10,9 +10,9 @@
         <h1>{{ nombre }}</h1>
         <script>
           var data = new Date("{{ fecha_comienzo}}");
-          document.getElementById("fecha").innerHTML = "Comienza el: " + data.toLocaleDateString();
+          document.write("Comienza el: " + data.toLocaleDateString());
         </script>
-        <div id="fecha">{{{dateFormat}}}</div><br>
+        <div>{{{dateFormat}}}</div><br>
         <h3>Juego: {{ juego }}</h3>
       </td>
       <td>Descripción: <br>
