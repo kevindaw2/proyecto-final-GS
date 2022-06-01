@@ -5,7 +5,6 @@ const express = require('express');
 const router = express.Router();
 const { pool } = require('../db');
 const passport = require('passport');
-const helpers = require('../lib/helpers');
 
 
 router.get('/', async (req, res) => {
@@ -19,16 +18,6 @@ router.post('/',
         failureRedirect: '/'
     })
 );
-
-router.get('/vistaTorneo', async (req, res) => {
-    //res.render('main', { layout: 'vistaTorneo'}, helpers: {dateFormat()}); 
-    res.render('home', { //index.hbs < inside main.hbs
-        layout: 'vistaTorneo',
-        helpers: {
-            dateFormat() { return 'foo.'; }
-        }
-    });
-});
 
 
 module.exports = router;

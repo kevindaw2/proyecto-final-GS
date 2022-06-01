@@ -33,14 +33,6 @@ app.engine('hbs', exphbs.engine({
     helpers: require('./lib/handlebars') //helpers para hbs 
 }));
 
-const hbs = create({
-    helpers: {
-        dateFormat() {return "h"},
-        foo() { return 'FOO!'; },
-        bar() { return 'BAR!'; }
-    }
-});
-
 //middle
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -70,6 +62,7 @@ app.listen(app.get('port'), () => {
 //routes
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/authentication');
+var torneosRouter = require('./routes/torneos');
 const req = require('express/lib/request');
 
 app.use('/', indexRouter);
