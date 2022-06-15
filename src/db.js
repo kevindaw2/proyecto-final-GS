@@ -8,18 +8,18 @@ dotenv.config();
 
 
 var database = { //session store
-    host: process.env.DBHOST,
-    user: process.env.DBUSER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE 
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "torneos" 
 }
 
  // Crear grupo de datos
  const pool  = mysql.createPool({
-    host: process.env.DBHOST, // dirección de la base de datos
-    user: process.env.DBUSER, // usuario de la base de datos
-    password: process.env.PASSWORD, // contraseña de la base de datos
-    database: process.env.DATABASE // seleccionar base de datos
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "torneos" 
 }); 
 
 // Realizar operaciones de sesión en el grupo de datos

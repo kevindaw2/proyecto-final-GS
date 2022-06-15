@@ -37,10 +37,18 @@ passport.use('local.signup', new Stratergy({ //local signup
         password
     };
 
+    newUser.alias = req.body.alias;
+    newUser.nombre = req.body.nombre;
+    newUser.apellido = req.body.apellido;
+    newUser.correo = correo;
+    newUser.telefono = req.body.telefono;
+
+    console.log("se viene el req");
+    console.log(req.body);
+
     newUser.password = await encrypter.encryptPassword(password);
     const result = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
     newUser.id_usuario = result.insertId;
-    console.log(result);
     return done(null, newUser); //callback
 }));
 

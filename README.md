@@ -23,7 +23,7 @@ npm run dev (ejecutar el proyecto en modo desarrollo)
 
 ```phpmyadmin-mysql
 ejectuar phpmyadmin y apache (por ejemplo yo uso xampp)
-importar la bbdd torneos.sql
+importar la bbdd `torneos.sql`, previamente creando la base de datos `torneos`
 ```
 
 ``` 

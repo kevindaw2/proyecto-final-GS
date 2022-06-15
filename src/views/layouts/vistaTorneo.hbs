@@ -14,7 +14,7 @@
      {{> header }}
      <div id="toutTitleDivOut" class="center">
           <div id="tourTitleDiv">
-               {{#each torneo }}
+               {{#each datos.torneo }}
                <img id="tourTitleGameImg" src="../../fotos/portadas/{{ juego }}.jpg" alt="">
                <div id="tourTitleInfoDiv">
                     <span id="tourTitleText">{{nombre}}</span>
@@ -30,7 +30,7 @@
      <div id="tourDescDiv" class="contentDiv">
           <div class="tourHeading">Descripción del torneo</div>
           <div class="tourText">
-                {{#each torneo }} 
+                {{#each datos.torneo }} 
                     {{descripcion}}
                 {{/each }}
           </div>
@@ -38,117 +38,39 @@
 
      <div id="tourRulesDiv" class="contentDiv">
           <div class="tourHeading">Reglas del torneo</div>
-          <div class="tourText">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-               Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam
-               purus lectus, aliquam eu eros in, mollis ultrices ex. Nam bibendum risus posuere odio placerat, in porta
-               nulla malesuada. Vivamus a facilisis sapien. Duis vel enim risus. Fusce quam mi, consequat eu lacus eget,
-               scelerisque pharetra metus. Curabitur nisl massa, congue sit amet porttitor id, tincidunt non ipsum.
+          <div class="tourText">
+               {{#each datos.torneo }} 
+                    {{reglas}}
+                {{/each }}
           </div>
      </div>
 
      <div id="tourPlayersDiv" class="contentDiv">
           <div class="tourHeading">Jugadores registrados</div>
           <div id="tourPlayerList">
-               {{!-- meter un foreach aqui o algo --}}
+               {{#each datos.regUsers}}
                <div class="userListEntry">
                     <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                    <span class="userListName">Alejandro</span>
+                    <span class="userListName">{{alias}}</span>
                </div>
-               <div class="userListEntry">
-                    <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                    <span class="userListName">Roberto</span>
-               </div>
-               <div class="userListEntry">
-                    <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                    <span class="userListName">Fernando</span>
-               </div>
+               {{/each}}
           </div>
-          {{#each torneo }}
-               <a href="/torneos/vistaTorneo/{{id_torneo}}" id="registerButton">Apuntarse al torneo</a>
-          {{/each }}
+          {{#if isReg}}
+               <button id="registerButton" type="submit" disabled>Ya estás apuntado!</button>
+          {{else}}
+               {{#if user}}
+                    {{#each datos.torneo}}
+                         <form action="registrarUser/{{id_torneo}}" method="POST">
+                              <button id="registerButton" type="submit">Apuntarse al torneo</button>
+                         </form>
+                    {{/each }}
+               {{/if}}
+          {{/if}}
      </div>
 
      <div id="bracketDiv">
           <div id="bracketColumns">
-               <div class="bracketColumn">
-                    <div class="columnTitle">Ronda 1</div>
-                    <div class="encounterList">
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Alejandro</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Fernando</span>
-                              </div>
-                         </div>
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Roberto</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Laura</span>
-                              </div>
-                         </div>
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Ramon</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Albert</span>
-                              </div>
-                         </div>
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Anastasia</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <img class="userListIcon" src="../../fotos/iconos/user.png" alt="">
-                                   <span class="userListName">Bernardo</span>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-               <div class="bracketColumn">
-                    <div class="columnTitle">Semi-Finales</div>
-                    <div class="encounterList">
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <span class="userListName grey">Ganador de A1</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <span class="userListName grey">Ganador de A2</span>
-                              </div>
-                         </div>
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <span class="userListName grey">Ganador de A3</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <span class="userListName grey">Ganador de A4</span>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-               <div class="bracketColumn">
-                    <div class="columnTitle">Gran Final</div>
-                    <div class="encounterList">
-                         <div class="encounter">
-                              <div class="encounterPlayer">
-                                   <span class="userListName grey">Ganador de B1</span>
-                              </div>
-                              <div class="encounterPlayer">
-                                   <span class="userListName grey">Ganador de B2</span>
-                              </div>
-                         </div>
-                    </div>
-               </div>
+               
           </div>
      </div>
      {{> footer}}
@@ -157,5 +79,192 @@
 </html>
 
 <script>
+     const regUsers = {
+          users : []
+     };
+</script>
+
+{{#each datos.regUsers}}
+     <script>
+          regUsers.users.push({alias: "{{alias}}", pic: "../../fotos/iconos/user.png"});
+     </script>
+{{/each}}
+
+<script>
+
+     const bColumns = document.getElementById("bracketColumns");
+
+     let maxPlayerCount = 2;
+     const encounters = [];
+
+
+     while (true) {
+          if (regUsers.users.length > maxPlayerCount) {
+               maxPlayerCount = maxPlayerCount * 2;
+          } else {
+               break;
+          }
+     }
+
+     let roundCount = 1;
+     let currentPlayerCount = 1;
+
+     while (maxPlayerCount != 1) {
+
+          encounters[roundCount-1] = [];
+
+          // la columna en si
+          const newColumn = document.createElement('div');
+          newColumn.className = "bracketColumn";
+
+          // titulo de columna
+          const columnTitle = document.createElement('div');
+          columnTitle.className = "columnTitle";
+          columnTitle.innerText = "Ronda " + roundCount;
+          newColumn.appendChild(columnTitle);
+
+          // seccion de encuentros
+          const encounterList = document.createElement('div');
+          encounterList.className = "encounterList";
+
+          // por cada 2 jugadores
+          for (let i = 0; i < maxPlayerCount / 2; i++) {
+
+               const encounter = document.createElement('div');
+               encounter.className = "encounter";
+               encounter.setAttribute("num", i);
+               encounter.setAttribute("round", (roundCount - 1));
+
+               for (let j = 0; j < 2; j++) {
+
+                    const encounterPlayer = document.createElement('div');
+                    encounterPlayer.className = "encounterPlayer";
+
+                    // cuadradito de encuentro
+                    const userListName = document.createElement('span');
+                    userListName.classList.add("userListName", "grey");
+                    if (roundCount != 1) {
+                         userListName.innerText = "Ganador de Ronda " + (roundCount - 1) + "-" + currentPlayerCount;
+                    } else {
+                         userListName.innerText = "Bye";
+                    }
+                    encounterPlayer.appendChild(userListName);
+
+                    encounter.appendChild(encounterPlayer);
+
+                    currentPlayerCount++;
+
+               }
+
+               encounterList.appendChild(encounter);
+
+               encounters[roundCount-1].push(encounter);
+
+          }
+
+          newColumn.appendChild(encounterList);
+
+          // append final con todo lo demas
+          bColumns.appendChild(newColumn);
+
+          maxPlayerCount = maxPlayerCount / 2;
+          currentPlayerCount = 1;
+          roundCount++;
+
+     }
+
+     // posicionar los jugadores en primera ronda
+     let playerCount = 0;
+     for (let i = 0; i < regUsers.users.length; i++) {
+
+          let encounterNum;
+          if (i % 2 == 0) {
+               encounterNum = playerCount;
+               playerCount++;
+          } else {
+               encounterNum = playerCount - 1 + encounters[0].length / 2;
+          }
+
+          let encounterElement;
+          if (i < encounters[0].length) {
+               encounterElement = encounters[0][encounterNum].firstElementChild;
+          } else {
+               encounterElement = encounters[0][encounterNum].lastElementChild;
+          }          
+
+          encounterAddUser(encounterElement, regUsers.users[i].pic, regUsers.users[i].alias)
+          encounterAddButt(encounterElement);
+
+          if (i+1 == encounters[0].length) {
+               playerCount = 0;
+          }
+     }
+
+     function encounterAddUser(el, src, name) {
+          // borrar lo que ya hay
+          el.innerHTML = "";
+
+          // imagen del usuario
+          const userListIcon = document.createElement('img');
+          userListIcon.classList.add("userListIcon");
+          userListIcon.src = src;
+          el.appendChild(userListIcon);
+
+          // nombre del usuario
+          const userListName = document.createElement('span');
+          userListName.classList.add("userListName");
+          userListName.innerText = name;
+          el.appendChild(userListName);
+
+     }
+     function encounterAddButt(el) {
+          // boton de victoria
+          const victoryButt = document.createElement('button');
+          victoryButt.classList.add("victoryButt");
+          victoryButt.innerText = "🗸";
+          victoryButt.addEventListener("click", giveVictory)
+          el.appendChild(victoryButt);
+     }
+
+     function giveVictory() {
+
+          // dar color derrota
+          const encounterDuo = this.parentElement.parentElement.children;
+          for (let i = 0; i < encounterDuo.length; i++) {
+               encounterDuo[i].style.backgroundColor = "#3d1818";
+          }
+          
+          // dar color victoria
+          this.parentElement.style.backgroundColor = "#183d18";
+
+          // insertar siguiente encuentro
+          try {
+               const nextRound = Number(this.parentElement.parentElement.getAttribute("round")) + 1;
+               const nextNum = Math.ceil((Number(this.parentElement.parentElement.getAttribute("num")) + 1) / 2) - 1;
+               let nextEncounter;
+               if (this.parentElement.parentElement.getAttribute("num") % 2 == 0) {
+                    nextEncounter = encounters[nextRound][nextNum].firstElementChild;
+               } else {
+                    nextEncounter = encounters[nextRound][nextNum].lastElementChild;
+               }
+               encounterAddUser(nextEncounter, this.parentElement.firstElementChild.src, this.parentElement.children[1].innerText);
+               if (nextEncounter.parentElement.getElementsByClassName("userListIcon").length == 2) {
+                    encounterAddButt(nextEncounter.parentElement.children[0]);
+                    encounterAddButt(nextEncounter.parentElement.children[1]);
+               }
+          } catch (e) {
+
+          }
+         
+          // quitar botones
+          for (let i = 0; i < encounterDuo.length; i++) {
+               if (encounterDuo[i].innerText != "Bye") {
+                    encounterDuo[i].lastElementChild.remove();
+               }
+          }
+
+
+
+     }
 
 </script>

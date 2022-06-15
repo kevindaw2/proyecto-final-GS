@@ -43,8 +43,6 @@ router.post('/signup', passport.authenticate('local.signup', {
 //get profile
 router.get('/profile', async(req, res) => {
     const id = req.user.id_usuario; 
-    console.log("idusuario");
-    console.log(id);
     const torneos = await pool.query('SELECT * FROM torneos where id_jugador =?', id);
     res.render('main', { layout: 'profile', torneos}); //index.hbs < inside main.hbs
 });
@@ -54,5 +52,7 @@ router.get('/logout', (req, res) => {
     req.logOut(); 
     res.redirect('/');
 });
+
+
 
 module.exports = router; 

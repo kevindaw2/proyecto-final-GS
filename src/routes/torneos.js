@@ -16,14 +16,25 @@ router.post('/add', async(req, res) => { //post torneo
     const result = Object.values(JSON.parse(JSON.stringify(idTorneo)));
     result.forEach((v) => console.log(v.id_torneo));
 
-    res.redirect('/torneos/vistaTorneo/1' );
+    res.redirect('/torneos/vistaTorneo/' + result[0].id_torneo);
 });
 
 //torneo especifico por id 
 router.get('/vistaTorneo/:id', async(req, res) => {
     const { id } = req.params; 
-    const torneo = await pool.query('SELECT * FROM torneos where id_torneo = ?', [id]); 
-    res.render('main', { layout: 'vistaTorneo', torneo}); 
+    const torneo = await pool.query('SELECT * FROM torneos where id_torneo = ?', [id]);
+    const regUsers = await pool.query('SELECT * FROM usuarios JOIN usuarios_torneo ON usuarios_torneo.id_usuario = usuarios.id_usuario WHERE usuarios_torneo.id_torneo = ?;', [id]);
+    const datos = {};
+    datos.torneo = torneo;
+    datos.regUsers = regUsers;
+    let isReg = false;
+    if (req.user) {
+        const isRegQ = await pool.query('SELECT * FROM usuarios_torneo WHERE usuarios_torneo.id_torneo = '+id+' AND usuarios_torneo.id_usuario = '+req.user.id_usuario+';');
+        if (isRegQ.length) {
+            isReg = true;
+        }
+    }   
+    res.render('main', { layout: 'vistaTorneo', datos, isReg}); 
 });
 
 //get editarTorneo por id 
@@ -55,6 +66,18 @@ router.get('/delete/:id', async(req, res) => {
     const {id} = req.params; 
     await pool.query('DELETE FROM torneos WHERE id_torneo =?', [id]);
     res.redirect('/profile');
+}); 
+
+router.post('/vistaTorneo/registrarUser/:id', async(req, res) => {
+    
+    const newRow = {};
+    newRow.id_torneo = req.params.id;
+    newRow.id_usuario = req.user.id_usuario;
+
+    await pool.query('INSERT INTO usuarios_torneo set ?', [newRow]);
+
+    res.redirect('/torneos/vistaTorneo/' + req.params.id);
+
 }); 
 
 module.exports = router; 

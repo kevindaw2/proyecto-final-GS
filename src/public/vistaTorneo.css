@@ -87,6 +87,10 @@
 #registerButton:hover {
     background-color: var(--bgLight);
 }
+#registerButton:disabled {
+    pointer-events: none;
+    border-color: var(--highlightDark);
+}
 
 
 #bracketDiv {
@@ -95,7 +99,6 @@
     padding: 30px 150px;
 }
 #bracketColumns {
-    overflow-x: auto;
     display: flex;
 }
 
@@ -114,7 +117,7 @@
 }
 
 .encounterList {
-    height: 400px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,7 +135,18 @@
     display: flex;
     gap: 6px;
     align-items: center;
+    height: 33px;
 }
 .grey {
      color: var(--text2);
- }
+}
+
+.victoryButt {
+    background-color: var(--bgLight);
+    color: var(--text1);
+    border-radius: 3px;
+    border: 1px solid var(--highlightDark);
+}
+.victoryButt:hover {
+    border-color: var(--highlightLight);
+}
